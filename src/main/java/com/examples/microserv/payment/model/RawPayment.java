@@ -1,10 +1,19 @@
 package com.examples.microserv.payment.model;
  
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
- @Entity
+
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.Data;
+
+@Entity
 @Table(name="rawpayment")
 public class RawPayment {
 	
@@ -14,12 +23,16 @@ public class RawPayment {
 	private String spCode;
 	private String pspCode;
 	private Long billControlNumber;
+	private String paymentReceipt;
 	private Double paidAmount;
 	private String billCurrency;
 	private String payerEmail;
-	//private Date paidDate;
-	//private Date paymentReceivedDate;
-	//private Date paymentReceipt;
+	@JsonFormat
+	(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+	private String paidDate;
+	@JsonFormat
+	(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+	private String paymentReceivedDate;
 	public int getId() {
 		return id;
 	}
@@ -44,6 +57,12 @@ public class RawPayment {
 	public void setBillControlNumber(Long billControlNumber) {
 		this.billControlNumber = billControlNumber;
 	}
+	public String getPaymentReceipt() {
+		return paymentReceipt;
+	}
+	public void setPaymentReceipt(String paymentReceipt) {
+		this.paymentReceipt = paymentReceipt;
+	}
 	public Double getPaidAmount() {
 		return paidAmount;
 	}
@@ -62,7 +81,18 @@ public class RawPayment {
 	public void setPayerEmail(String payerEmail) {
 		this.payerEmail = payerEmail;
 	}
-	
-    
+	public String getPaidDate() {
+		return paidDate;
+	}
+	public void setPaidDate(String paidDate) {
+		this.paidDate = paidDate;
+	}
+	public String getPaymentReceivedDate() {
+		return paymentReceivedDate;
+	}
+	public void setPaymentReceivedDate(String paymentReceivedDate) {
+		this.paymentReceivedDate = paymentReceivedDate;
+	}
+      
 	
 }

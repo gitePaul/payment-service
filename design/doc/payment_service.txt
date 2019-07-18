@@ -1,6 +1,9 @@
+ENDPOINT: http://localhost:8083/employee
+
 Pay Bill
 -------------------------------------------
-Request
+ENDPOINT:  URL: http://localhost:8083/employee
+Request  : PUT
 
 {
 	"spCode":"SP102",
@@ -22,12 +25,14 @@ Response
 
 Check Payment
 ---------------------------------------------------------
-Request
+ENDPOINT:  URL: http://localhost:8083/employee
+Request  : POST
 
 {
 	"spCode":"SP102",
 	"paymentReceipt":"991021234567" 	 
 }
+
 
 Response
  
