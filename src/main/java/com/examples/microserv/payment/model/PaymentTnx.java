@@ -1,6 +1,5 @@
 package com.examples.microserv.payment.model;
  
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,21 +12,15 @@ public class PaymentTnx {
     
 	@Id
 	@GeneratedValue
-	//@Column(name="id", nullable=false)
-	private int id;
-	//@Column(name="pspId", nullable=true)
-	private String pspId;
-	//@Column(name="spId", nullable=true)
+	private int id;	
+	private String pspId;	
 	private String spId;
-	//@Column(name="billControlNumber", nullable=true)
-	private Long billControlNumber;
-	//@Column(name="paidAmount", nullable=true)
+	private Long billControlNumber;	
 	private Double paidAmount;
+	private String payerEmail;
 	//private Date paidDate;
 	//private Date receivedDate;
-	//private Long paymentReceipt;
-	//@Column(name="payerEmail", nullable=true)
-	private String payerEmail;
+	//private Long paymentReceipt;	
 	public int getId() {
 		return id;
 	}
@@ -58,7 +51,11 @@ public class PaymentTnx {
 	public void setPaidAmount(Double paidAmount) {
 		this.paidAmount = paidAmount;
 	}
- 
-	
-	
+	public String getPayerEmail() {
+		return payerEmail;
+	}
+	public void setPayerEmail(String payerEmail) {
+		this.payerEmail = payerEmail;
+	}	
+	 
 }

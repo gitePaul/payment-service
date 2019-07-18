@@ -27,9 +27,9 @@ public class PaymentController {
 	RawPaymentService rawPaymnentService;
 	 
     @GetMapping
-	public List<PaymentTnx> paymentService()
+	public List<RawPayment> rawPaymnentService()
 	{		 
-	  return paymentTnxService.list();
+	  return rawPaymnentService.list();
 	}
     @PutMapping
     public ResponseEntity<String> payBill(@RequestBody RawPayment rawPayment){
