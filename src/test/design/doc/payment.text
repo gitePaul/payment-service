@@ -1,0 +1,46 @@
+Pay Bill
+-------------------------------------------
+Request
+
+{
+	"spCode":"SP102",
+	"pspCode":"PSP006",  
+	"billControlNumber":"991021234567",
+	"paidAmount":"50000",  
+	"billCurrency":"TZS",
+	"payerEmail":"omugamba@gmail.com",
+	"paymentReceipt":"991021234567",
+	"paidDate":"18-07-2019",
+	"receivedDate":"18-07-2019"
+	
+}
+Response
+
+{
+ "status":"201",
+}
+
+Check Payment
+---------------------------------------------------------
+Request
+
+{
+	"spCode":"SP102",
+	"paymentReceipt":"991021234567" 	 
+}
+
+Response
+ 
+{
+	"spCode":"SP102",
+	"pspCode":"PSP006",  
+	"billControlNumber":"991021234567",
+	"paidAmount":"50000",  
+	"billCurrency":"TZS",
+	"spShortName":"TRA",
+	"pspShortName":"NMB"
+	"paymentReceipt":"991021234567"
+	"payerEmail":"omugamba@gmail.com",
+	"paidDate":"18-07-2019",
+	"paymentReceivedDate":"18-07-2019"
+}

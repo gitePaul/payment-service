@@ -3,10 +3,11 @@ package com.examples.microserv.payment.controller;
 import static org.hamcrest.CoreMatchers.containsString;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
@@ -29,7 +30,19 @@ public class PaymentControllerTest {
 	private MockMvc mockMvc;
 	@Autowired
 	TestRestTemplate restTemp;
+	@Test
+	public void shouldGetAllPayments() throws Exception {
+		Logger log = LoggerFactory.getLogger(PaymentControllerTest.class);
+ 
+		log.info("\n--------------------All Payments---------------------------\n{}", mockMvc.toString());
 
+		mockMvc.perform(get("/payment").contentType(MediaType.APPLICATION_JSON))
+		.andDo(print())
+		.andExpect(status().isOk())
+		.andExpect(jsonPath("$").isNotEmpty())
+		.andDo(document("payment"));
+
+	}
 	@Test
 	public void shouldGetPayment() throws Exception {
 		Logger log = LoggerFactory.getLogger(PaymentControllerTest.class);
