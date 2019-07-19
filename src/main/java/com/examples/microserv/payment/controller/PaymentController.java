@@ -1,15 +1,16 @@
 package com.examples.microserv.payment.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping; 
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.examples.microserv.payment.model.RawPayment;
 import com.examples.microserv.payment.service.PaymentTnxService;
@@ -34,5 +35,13 @@ public class PaymentController {
     	rawPaymnentService.create(rawPayment); 
     	 
 		return new ResponseEntity<String>("Paid Succesfully", HttpStatus.CREATED);
+	} 
+    
+    @PostMapping(value="/check")
+    public List<RawPayment> checkByPspCodeAndPaymenReceipt(Model model,@RequestBody @Param("pspCode") String pspCode,@Param("paymentReceipt") String paymentReceipt){
+           List<RawPayment> paymentList= rawPaymnentService.checkByPspCodeAndPaymenReceipt(pspCode, paymentReceipt);
+    	   model.addAllAttributes(paymentList);
+		return paymentList;
+    	 
 	} 
 }

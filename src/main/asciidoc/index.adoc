@@ -2,7 +2,7 @@
 :toc:
 :toclevels: 1
 
-Service running at http://localhost:8083
+Service Running at http://localhost:8083
     
 == List Payment
 .curl
@@ -25,5 +25,16 @@ include::{snippets}/make-payment/http-request.adoc[]
 .response
 include::{snippets}/make-payment/http-response.adoc[]
 
+
+== Check Payment
+
+.curl
+include::{snippets}/check-payment/curl-request.adoc[]
+
+.request
+include::{snippets}/check-payment/http-request.adoc[]
+
+.response
+include::{snippets}/check-payment/http-response.adoc[]
  
 Thank you :)

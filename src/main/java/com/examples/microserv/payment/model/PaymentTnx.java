@@ -1,16 +1,11 @@
 package com.examples.microserv.payment.model;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.Data;
  
 @Component

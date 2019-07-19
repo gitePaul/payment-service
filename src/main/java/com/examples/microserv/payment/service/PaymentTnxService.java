@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.examples.microserv.payment.model.PaymentTnx;
-import com.examples.microserv.payment.model.RawPayment;
 import com.examples.microserv.payment.repository.PaymentTnxRepository; 
 @Service
 public class PaymentTnxService {

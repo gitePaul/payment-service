@@ -76,5 +76,23 @@ public class PaymentControllerTest {
 				.andDo(document("make-payment"));
 		log.info("\n--------------------END RECEIVING PAYMENT---------------------------{}\n",mockMvc.perform(post("/payment").contentType(MediaType.APPLICATION_JSON).content(body)));
 
+	} 
+	
+	@Test
+	public void shouldCheckPaymentByPspCodeandPayRec() throws Exception {
+		Logger log = LoggerFactory.getLogger(PaymentControllerTest.class);
+
+		String body = "{\r\n" + 				
+				"	\"pspCode\":\"PSP006\",  \r\n" +				
+				"	\"paymentReceipt\":\"991021234567\",\r\n" + 					 
+				"}";
+		log.info("\n--------------------CHECK PAYMENT---------------------------\n{}",mockMvc);
+
+		mockMvc.perform(post("/payments/check").contentType(MediaType.APPLICATION_JSON).content(body))
+		        .andDo(print())
+				.andExpect(status().isOk())				 
+				.andDo(document("check-payment"));
+		log.info("\n--------------------END CHECK PAYMENT---------------------------{}\n",mockMvc.perform(post("/payment").contentType(MediaType.APPLICATION_JSON).content(body)));
+
 	}    
 }

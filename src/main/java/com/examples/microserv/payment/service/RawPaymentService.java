@@ -1,7 +1,8 @@
 package com.examples.microserv.payment.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service; 
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
 import com.examples.microserv.payment.model.RawPayment;
 import com.examples.microserv.payment.repository.RawPaymentRepository;
 @Service
@@ -29,9 +30,10 @@ public class RawPaymentService {
 		rawPaymentRepo.deleteById(rawPayId);
 	}
 	
-	/*public void receivePayment(RawPayment rawPayment) {
-		rawPaymentRepo.save(rawPayment);
-	}*/
+	public List<RawPayment> checkByPspCodeAndPaymenReceipt(@Param("pspCode") String pspCode,@Param("paymentReceipt") String paymentReceipt) {
+		
+		return rawPaymentRepo.checkByPspCodeAndPaymenReceipt(pspCode, paymentReceipt);
+	}
 
 
 }
