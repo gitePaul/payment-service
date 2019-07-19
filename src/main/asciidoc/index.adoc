@@ -1,18 +1,29 @@
-= Payment Service Documentation
+= Payment Service API Documentation 
+:toc:
+:toclevels: 1
 
-
-Service running at http://localhost:8083:
-== Make Payment
+Service running at http://localhost:8083
+    
+== List Payment
 .curl
-include::{snippets}/payment/curl-request.adoc[]
+include::{snippets}/payments/curl-request.adoc[]
 
 .request
-include::{snippets}/payment/http-request.adoc[]
+include::{snippets}/payments/http-request.adoc[]
 
 .response
-include::{snippets}/payment/http-response.adoc[]
+include::{snippets}/payments/http-response.adoc[]
+ 
+== Make Payment
 
-.body
-include::{snippets}/payment/response-body.adoc[]
+.curl
+include::{snippets}/make-payment/curl-request.adoc[]
 
-As you can see the format is very simple, and in fact you always get the same message.
+.request
+include::{snippets}/make-payment/http-request.adoc[]
+
+.response
+include::{snippets}/make-payment/http-response.adoc[]
+
+ 
+Thank you :)
