@@ -1,22 +1,23 @@
 package com.examples.microserv.payment.model; 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="rawpayment")
 public class RawPayment {
-	
-	@Id	 
-	@GeneratedValue
-	private int id;	
+		 
+	@Id
+	private String id;	
 	private String spCode;
 	private String pspCode;
-	private Long billControlNumber;
+	private String billControlNumber;
 	private String paymentReceipt;
-	private Double paidAmount;
+	private BigDecimal paidAmount;
 	private String billCurrency;
 	private String payerEmail;
 	@JsonFormat
@@ -25,10 +26,10 @@ public class RawPayment {
 	@JsonFormat
 	(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
 	private String paymentReceivedDate;
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getSpCode() {
@@ -43,10 +44,10 @@ public class RawPayment {
 	public void setPspCode(String pspCode) {
 		this.pspCode = pspCode;
 	}
-	public Long getBillControlNumber() {
+	public String getBillControlNumber() {
 		return billControlNumber;
 	}
-	public void setBillControlNumber(Long billControlNumber) {
+	public void setBillControlNumber(String billControlNumber) {
 		this.billControlNumber = billControlNumber;
 	}
 	public String getPaymentReceipt() {
@@ -55,10 +56,10 @@ public class RawPayment {
 	public void setPaymentReceipt(String paymentReceipt) {
 		this.paymentReceipt = paymentReceipt;
 	}
-	public Double getPaidAmount() {
+	public BigDecimal getPaidAmount() {
 		return paidAmount;
 	}
-	public void setPaidAmount(Double paidAmount) {
+	public void setPaidAmount(BigDecimal paidAmount) {
 		this.paidAmount = paidAmount;
 	}
 	public String getBillCurrency() {
@@ -85,6 +86,5 @@ public class RawPayment {
 	public void setPaymentReceivedDate(String paymentReceivedDate) {
 		this.paymentReceivedDate = paymentReceivedDate;
 	}
-      
-	
+	 
 }

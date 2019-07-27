@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,6 +20,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.examples.microserv.payment.dto.BillDto;
+import com.examples.microserv.payment.dto.RawPaymentDto;
 import com.examples.microserv.payment.repository.PaymentTnxRepository;
 import com.examples.microserv.payment.repository.RawPaymentRepository;
 import com.examples.microserv.payment.service.PaymentTnxService;
@@ -30,15 +34,19 @@ import com.examples.microserv.payment.service.RawPaymentService;
 public class PaymentControllerTest {
     
 	@Autowired
-	private MockMvc mockMvc;
-	@MockBean
-	PaymentTnxService paymentTnxService;
+	private MockMvc mockMvc;	 
 	@MockBean
 	RawPaymentService rawPaymentService;	
 	@MockBean
-	PaymentTnxRepository paymentTnxRepository;
+    PaymentTnxService paymentTnxService;
 	@MockBean
-    RawPaymentRepository rawPaymentRepository;	
+	RawPaymentRepository rawPaymentRepository;	
+	@MockBean
+    PaymentTnxRepository paymentTnxRepository;	
+	@MockBean
+	RawPaymentDto rawPaymentDto;
+	@MockBean
+	BillDto billDto;
 	Logger log = LoggerFactory.getLogger(PaymentControllerTest.class);
 	@Test
 	public void shouldGetAllPayments() throws Exception {		

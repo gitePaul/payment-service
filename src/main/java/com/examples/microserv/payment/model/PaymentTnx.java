@@ -1,11 +1,15 @@
 package com.examples.microserv.payment.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
  
 @Component
@@ -14,14 +18,13 @@ import lombok.Data;
 @Table(name="paymenttnx")
 public class PaymentTnx {
     
-	@Id
-	@GeneratedValue
-	private int id;	
+	@Id 
+	private String id;	
 	private String pspId;	
 	private String spId;
-	private Long billControlNumber;	
+	private String billControlNumber;	
 	private String paymentReceipt;	
-	private Double paidAmount;
+	private BigDecimal paidAmount;
 	private String payerEmail;
 	@JsonFormat
 	(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
@@ -29,10 +32,10 @@ public class PaymentTnx {
 	@JsonFormat
 	(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
 	private String receivedDate;
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getPspId() {
@@ -47,10 +50,10 @@ public class PaymentTnx {
 	public void setSpId(String spId) {
 		this.spId = spId;
 	}
-	public Long getBillControlNumber() {
+	public String getBillControlNumber() {
 		return billControlNumber;
 	}
-	public void setBillControlNumber(Long billControlNumber) {
+	public void setBillControlNumber(String billControlNumber) {
 		this.billControlNumber = billControlNumber;
 	}
 	public String getPaymentReceipt() {
@@ -59,10 +62,10 @@ public class PaymentTnx {
 	public void setPaymentReceipt(String paymentReceipt) {
 		this.paymentReceipt = paymentReceipt;
 	}
-	public Double getPaidAmount() {
+	public BigDecimal getPaidAmount() {
 		return paidAmount;
 	}
-	public void setPaidAmount(Double paidAmount) {
+	public void setPaidAmount(BigDecimal paidAmount) {
 		this.paidAmount = paidAmount;
 	}
 	public String getPayerEmail() {
@@ -82,6 +85,6 @@ public class PaymentTnx {
 	}
 	public void setReceivedDate(String receivedDate) {
 		this.receivedDate = receivedDate;
-	}	
-	 
+	}	 
+	     
 }
